@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .bg-primary {
+        @apply bg-purple-500
+    }
+    .bg-primary-light {
+        @apply bg-purple-50
+    }
+    .title-color {
+        @apply text-purple-900
+    }
+    .text-primary {
+        @apply text-red-500
+    }
+    .text-primary-light {
+        @apply text-red-50
+    }
+
+    .nav-items {
+        @apply grid gap-y-6 md:gap-y-7
+    }
+
+    .nav-items > .nav-subtitle {
+        @apply text-gray-500 text-lg uppercase tracking-widest md:opacity-0 transition duration-300 nav-hover:opacity-100
+    }
+}
