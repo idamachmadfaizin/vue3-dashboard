@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-container {
+    scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
 
 @layer base {
     .bg-primary {
@@ -19,11 +28,32 @@
         @apply text-red-50
     }
 
+    .nav-icon {
+        @apply text-sm mr-2 md:text-lg
+    }
+
+    .nav-name {
+        @apply opacity-0 transition duration-300 md:group-hover:opacity-100 text-sm whitespace-nowrap
+    }
+
     .nav-items {
         @apply grid gap-y-6 md:gap-y-7
     }
 
-    .nav-items > .nav-subtitle {
-        @apply text-gray-500 text-lg uppercase tracking-widest md:opacity-0 transition duration-300 nav-hover:opacity-100
+    .nav-dropdown {
+        @apply overflow-hidden max-h-5 transition-all duration-500 ease-in-out
+    }
+    .nav-dropdown:hover {
+        max-height: 100rem;
+    }
+    .nav-dropdown-icon {
+        @apply ml-auto transition-all duration-500
+    }
+    .nav-dropdown:hover .nav-dropdown-icon {
+        @apply transform rotate-180
+    }
+
+    .active {
+        @apply text-purple-500
     }
 }

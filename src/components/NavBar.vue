@@ -1,14 +1,14 @@
 <template>
-    <header class="fixed top-0 left-0 w-full bg-gray-50 border shadow-sm px-4 z-50 md:py-0 md:pr-12 pb-24">
+    <header class="fixed top-0 left-0 w-full bg-white border shadow-sm px-4 z-50 md:py-0 md:pr-12 md:pl-24">
         <div class="flex items-center h-14 justify-between md:h-16">
             <img src="../assets/perfil.jpg" alt="perfil" class="rounded-full w-10 h-10 md:order-1">
 
-            <a href="#" class="text-gray-500 font-medium hidden md:block">Brand-name</a>
+            <a href="#" class="text-gray-800 font-medium hidden md:block">Brand-name</a>
 
             <!-- Search -->
-            <div class="flex py-2 px-3 bg-gray-200 rounded-md w-9/12 sm:w-5/12">
-                <input type="search" placeholder="Search" class="w-full border-none outline-none bg-gray-200">
-                <i class='bx bx-search text-xl'></i>
+            <div class="flex py-2 px-3 bg-gray-100 rounded-md md:w-2/6 sm:w-5/12">
+                <input type="search" placeholder="Search" class="w-full border-none outline-none bg-gray-100">
+                <i class='bx bx-search text-xl text-gray-400'></i>
             </div>
 
             <!-- Menu Toggle -->
