@@ -13,7 +13,7 @@
                         <div v-for="(nav, iNav) in navs" :key="iNav">
                             <h3 v-if="isSubtitle(nav)" class="text-gray-500 text-base font-semibold uppercase tracking-widest md:opacity-0 md:transition md:duration-300 md:group-hover:opacity-100">{{ nav.text }}</h3>
 
-                            <a v-else-if="!isDropdown(nav)" href="#" class="flex items-center text-purple-600">
+                            <a v-else-if="!nav.items" href="#" class="flex items-center text-purple-600">
                                 <i class="nav-icon" :class="[nav.icon]"></i>
                                 <span class="nav-name">{{ nav.text }}</span>
                             </a>
