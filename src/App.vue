@@ -40,7 +40,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import NavBar from './containers/NavBar.vue'
-import SideNav from './containers/SideNav.vue'
+import SideNav from './containers/side-nav/SideNav.vue'
 
 export default defineComponent({
   name: 'App',
