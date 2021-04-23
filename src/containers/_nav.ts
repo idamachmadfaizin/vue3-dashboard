@@ -1,50 +1,56 @@
-export interface IParent {
+export interface INavParent {
+    name: string
+    children: INavChildren[]
+}
+export interface INavChildren {
     text: string
-    to?: string;
-    icon?: string;
+    to?: string
+    icon?: string
     badge?: {
         text: string,
         color: string,
         class: string,
     },
-    items?: IChildren[],
+    items?: INavItem[],
 }
 
-export interface IChildren {
+export interface INavItem {
     text: string
     to: string
 }
 
-export const navs: IParent[] = [
+export const navs: INavParent[] = [
     {
-        text: 'PROFILE'
-    },
-    {
-        text: 'Home',
-        to: '#',
-        icon: 'bx bx-home',
-    },
-    {
-        text: 'Profile',
-        to: '#',
-        icon: 'bx bx-user',
-        items: [
-            { text: 'Password', to: '#' },
-            { text: 'Mail', to: '#' },
-            { text: 'Accounts', to: '#' },
+        name: 'PROFILE',
+        children: [
+            {
+                text: 'Home',
+                to: '#home',
+                icon: 'bx bx-home',
+            },
+            {
+                text: 'Profile',
+                to: '#profile',
+                icon: 'bx bx-user',
+                items: [
+                    { text: 'Password', to: '#password' },
+                    { text: 'Mail', to: '#mail' },
+                    { text: 'Accounts', to: '#account' },
+                ]
+            },
+            {
+                text: 'Messages',
+                to: '#message',
+                icon: 'bx bx-message-rounded',
+            },
         ]
-    },
-    {
-        text: 'Messages',
-        to: '#',
-        icon: 'bx bx-message-rounded',
     },
 ]
 
-export const navFoots: IParent[] = [
+export const navFoots: INavChildren[] = [
     {
         text: 'Log out',
-        to: '#',
+        to: '#logout',
         icon: 'bx bx-log-out',
     }
 ]
