@@ -4,7 +4,7 @@ export interface INavParent {
 }
 export interface INavChildren {
     text: string
-    to?: string
+    to: string
     icon?: string
     badge?: {
         text: string,
