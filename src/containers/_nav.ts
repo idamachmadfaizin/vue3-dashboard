@@ -1,6 +1,8 @@
 export interface INavParent {
-    name: string
-    children: INavChildren[]
+    text: string,
+    to?: string,
+    icon?: string,
+    children?: INavChildren[]
 }
 export interface INavChildren {
     text: string
@@ -21,26 +23,31 @@ export interface INavItem {
 
 export const navs: INavParent[] = [
     {
-        name: 'PROFILE',
+        text: 'Dashboard',
+        icon: 'bx bxs-dashboard',
+        to: '/dashboard'
+    },
+    {
+        text: 'PROFILE',
         children: [
             {
                 text: 'Home',
-                to: '#home',
+                to: '/home',
                 icon: 'bx bx-home',
             },
             {
                 text: 'Profile',
-                to: '#profile',
+                to: '/profile',
                 icon: 'bx bx-user',
                 items: [
-                    { text: 'Password', to: '#password' },
-                    { text: 'Mail', to: '#mail' },
-                    { text: 'Accounts', to: '#account' },
+                    { text: 'Password', to: '/profile/password' },
+                    { text: 'Mail', to: '/profile/mail' },
+                    { text: 'Accounts', to: '/profile/account' },
                 ]
             },
             {
                 text: 'Messages',
-                to: '#message',
+                to: '/message',
                 icon: 'bx bx-message-rounded',
             },
         ]
@@ -50,7 +57,7 @@ export const navs: INavParent[] = [
 export const navFoots: INavChildren[] = [
     {
         text: 'Log out',
-        to: '#logout',
+        to: '/logout',
         icon: 'bx bx-log-out',
     }
 ]
