@@ -1,5 +1,5 @@
 <template>
-    <div class="group fixed top-0 -left-full md:left-0 h-screen pt-4 bg-white shadow-sm z-50 transition-all duration-300 md:w-17 md:hover:w-60 md:pt-5 md:pb-0" id="nav">
+    <div class="group fixed top-0 md:left-0 h-screen pt-4 md:pt-5 bg-white shadow-sm z-50 transition-all duration-300 md:w-17 md:hover:w-60 md:pb-0" :class="[showSideNav]">
         <nav class="nav-container flex h-full flex-col justify-between content-center pb-12 overflow-auto">
             <div>
                 <TheSideNavHeader :to="'/'" :text="'Brand-name'" />
@@ -54,7 +54,12 @@ export default defineComponent({
             navFoots,
         }
     },
-    methods: { }
+    methods: { },
+    computed: {
+        showSideNav(): string {
+            return this.$store.state.sideNavShow ? 'left-0' : '-left-full'
+        }
+    }
 })
 
 </script>

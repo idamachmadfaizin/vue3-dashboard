@@ -12,8 +12,8 @@
             </div>
 
             <!-- Menu Toggle -->
-            <div class="text-gray-700 cursor-pointer text-xl md:hidden">
-                <i class='bx bx-menu' id="header-toggle"></i>
+            <div class="text-gray-700 cursor-pointer text-xl md:hidden" @click="toggle">
+                <i class='bx' :class="[sideNavToggleIcon]"></i>
             </div>
         </div>
     </header>
@@ -22,7 +22,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-    name: 'TheNavBar'
+    name: 'TheNavBar',
+    methods: {
+        toggle() {
+            this.$store.commit('toggleSidebar')
+            console.log({toggleSidebar: this.$store.state.sideNavShow})
+        }
+    },
+    computed: {
+        sideNavToggleIcon(): string {
+            return this.$store.state.sideNavShow ? 'bx-x' : 'bx-menu'
+        }
+    }
 })
 </script>
 

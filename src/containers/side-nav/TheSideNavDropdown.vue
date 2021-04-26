@@ -5,7 +5,7 @@
             class="flex items-center text-gray-600 hover:text-purple-700"
         >
             <i class="text-sm md:text-xl mr-2" :class="[icon]"></i>
-            <span class="opacity-0 transition duration-300 md:group-hover:opacity-100 text-sm whitespace-nowrap">{{ text }}</span>
+            <span class="transition duration-300 md:group-hover:opacity-100 text-sm whitespace-nowrap" :class="[showText]">{{ text }}</span>
             <i class="bx bx-chevron-down text-sm md:text-xl mr-2 ml-auto transition-all duration-500 group-hover:transform group-hover:rotate-180"></i>
         </router-link>
 
@@ -34,6 +34,11 @@ export default defineComponent({
         icon: { type: String, required: true },
         to: { type: String, required: true },
         items: { type: Object as () => INavItem[], required: true },
+    },
+    computed: {
+        showText(): string {
+            return this.$store.state.sideNavShow ? 'opacity-100' : 'opacity-0'
+        }
     }
 })
 </script>
