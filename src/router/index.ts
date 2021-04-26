@@ -1,25 +1,30 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-import TheContainer from '../containers/TheContainer.vue'
-import Dashboard from '../views/Dashboard.vue';
-import Home from '../views/Home.vue';
+export enum RouteName {
+    BASE = 'Base',
+    DASHBOARD = 'Dashboard',
+    HOME = 'Home',
+}
+export function GetRouteName(): string[] {
+    return Object.values(RouteName);
+}
 
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        name: 'Base',
+        name: RouteName.BASE,
         redirect: '/dashboard',
-        component: TheContainer,
+        component: () => import('../containers/TheContainer.vue'),
         children: [
             {
                 path: 'dashboard',
-                name: 'Dashboard',
-                component: Dashboard,
+                name: RouteName.DASHBOARD,
+                component: () => import('../views/Dashboard.vue'),
             },
             {
                 path: 'home',
-                name: 'Home',
-                component: Home,
+                name: RouteName.HOME,
+                component: () => import('../views/Home.vue'),
             }
         ]
     }
