@@ -1,18 +1,26 @@
 import { createStore } from "vuex"
 
 export interface IState {
-    sideNavShow: boolean
+    isSideNavShow: boolean,
+    isSideNavEnter: boolean,
 }
 
 const state = (): IState => {
     return {
-        sideNavShow: false
+        isSideNavShow: false,
+        isSideNavEnter: false,
     }
 }
 
-const mutations = {
-    toggleSidebar(state: IState) {
-        state.sideNavShow = !state.sideNavShow
+export const mutations = {
+    toggleSidebar(state: IState): void {
+        state.isSideNavShow = !state.isSideNavShow
+    },
+    onEnterSideNav(state: IState): void {
+        state.isSideNavEnter = true
+    },
+    onLeaveSideNav(state: IState): void {
+        state.isSideNavEnter = false
     },
 }
 

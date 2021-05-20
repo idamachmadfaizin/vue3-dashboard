@@ -3,7 +3,13 @@
         <div class="flex items-center h-14 justify-between md:h-16">
             <img src="../assets/perfil.jpg" alt="perfil" class="rounded-full w-10 h-10 md:order-1">
 
-            <a href="#" class="text-gray-800 font-medium hidden md:block">Brand-name</a>
+            <a
+                href="#"
+                class="text-gray-800 font-medium hidden md:block transition-all duration-300"
+                :class="[showText]"
+            >
+                Brand-name
+            </a>
 
             <!-- Search -->
             <div class="flex py-2 px-3 bg-gray-100 rounded-md md:w-2/6 sm:w-5/12">
@@ -21,18 +27,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { mutations } from '../store/store'
 export default defineComponent({
     name: 'TheNavBar',
     methods: {
         toggle() {
-            this.$store.commit('toggleSidebar')
-            console.log({toggleSidebar: this.$store.state.sideNavShow})
+            this.$store.commit(mutations.toggleSidebar.name)
         }
     },
     computed: {
         sideNavToggleIcon(): string {
-            return this.$store.state.sideNavShow ? 'bx-x' : 'bx-menu'
-        }
+            return this.$store.state.isSideNavShow ? 'bx-x' : 'bx-menu'
+        },
+        showText(): string {
+            return this.$store.state.isSideNavEnter ? 'opacity-0' : 'opacity-100'
+        },
     }
 })
 </script>

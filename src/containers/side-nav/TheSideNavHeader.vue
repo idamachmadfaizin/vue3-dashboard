@@ -1,7 +1,15 @@
 <template>
-    <router-link :to="to" class="flex items-center px-4 md:px-6 text-gray-500 hover:text-purple-700 font-semibold mb-10">
+    <router-link 
+        class="flex items-center px-4 md:px-6 text-gray-500 hover:text-purple-700 font-semibold mb-10"
+        :to="to"
+    >
         <i class="bx bxs-disc text-sm md:text-xl mr-2"></i>
-        <span class="group-hover:opacity-100 transition duration-300 whitespace-nowrap" :class="[showText]">{{ text }}</span>
+        <span
+            class="sm:opacity-100 transition duration-300 whitespace-nowrap"
+            :class="[showText]"
+        >
+            {{ text }}
+        </span>
     </router-link>
 </template>
 
@@ -16,7 +24,7 @@ export default defineComponent({
     },
     computed: {
         showText(): string {
-            return this.$store.state.sideNavShow ? 'opacity-100' : 'opacity-0'
+            return this.$store.state.isSideNavEnter ? 'md:opacity-100' : 'md:opacity-0'
         }
     }
 })
