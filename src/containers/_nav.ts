@@ -1,31 +1,35 @@
-export interface INavParent {
-    text: string,
-    to?: string,
-    icon?: string,
-    children?: INavChildren[]
-}
-export interface INavChildren {
+export interface INavItem {
     text: string
     to: string
-    icon?: string
+    icon: string
+}
+
+export interface INavGroup {
+    text: string
+    children: Array<INavItem | INavDropdown>
+}
+
+export interface INavDropdown {
+    text: string
+    icon: string
+    items: Array<INavDropdownItem>
     badge?: {
         text: string,
         color: string,
         class: string,
-    },
-    items?: INavItem[],
+    }
 }
 
-export interface INavItem {
+export interface INavDropdownItem {
     text: string
     to: string
 }
 
-export const navs: INavParent[] = [
+export const navs: Array<INavItem | INavGroup> = [
     {
         text: 'Dashboard',
         icon: 'bx bxs-dashboard',
-        to: '/dashboard'
+        to: '/dashboard',
     },
     {
         text: 'PROFILE',
@@ -37,7 +41,6 @@ export const navs: INavParent[] = [
             },
             {
                 text: 'Profile',
-                to: '/profile',
                 icon: 'bx bx-user',
                 items: [
                     { text: 'Password', to: '/profile/password' },
@@ -54,7 +57,7 @@ export const navs: INavParent[] = [
     },
 ]
 
-export const navFoots: INavChildren[] = [
+export const navFoots: Array<INavItem> = [
     {
         text: 'Log out',
         to: '/logout',
