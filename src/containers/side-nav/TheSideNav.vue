@@ -21,7 +21,7 @@
                         <template v-if="nav.children && nav.children.length > 0">
                             <template v-for="({ text, icon, to, items }, iParent) in nav.children" :key="iParent">
                                 <TheSideNavItem v-if="!items && text && icon && to" :text="text" :icon="icon" :to="to" />
-                                <TheSideNavDropdown v-if="items && text && icon && to" :text="text" :icon="icon" :to="to" :items="items" />
+                                <TheSideNavDropdown v-if="items && text && icon" :text="text" :icon="icon" :to="to" :items="items" />
                             </template>
                         </template>
                     </div>
