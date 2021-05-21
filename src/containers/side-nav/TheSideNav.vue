@@ -46,7 +46,8 @@ import TheSideNavSubtitle from './TheSideNavSubtitle.vue'
 import TheSideNavItem from './TheSideNavItem.vue'
 import TheSideNavDropdown from './TheSideNavDropdown.vue'
 import TheSideNavHeader from './TheSideNavHeader.vue'
-import store from '../../store/store';
+import store, { mutations } from '../../store/store';
+import { BreakpointHelper } from '../../shared/helpers/breakpoint.helper';
 
 export default defineComponent({
     name: 'TheSideNav',
@@ -64,10 +65,11 @@ export default defineComponent({
     },
     methods: {
         onEnter(): void {
-            store.commit('onEnterSideNav')
+            store.commit(mutations.onEnterSideNav.name)
         },
         onLeave(): void {
-            store.commit('onLeaveSideNav')
+            const bp = new BreakpointHelper()
+            if (!bp.isSm) { store.commit(mutations.onLeaveSideNav.name) }
         },
     },
     computed: {
