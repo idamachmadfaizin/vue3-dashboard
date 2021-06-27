@@ -1,13 +1,13 @@
 <template>
+    <div  @click="toggle" class="fixed bg-gray-700 w-full h-full top-0 left-0 z-50 transition-all duration-300 md:hidden" :class="[showSideNavBg]"></div>
     <div
-        class="fixed top-0 md:left-0 h-screen pt-4 md:pt-5 bg-white shadow-sm z-50 transition-all duration-300 md:pb-0"
+        class="fixed md:top-0 md:left-0 h-5/6 md:h-screen w-11/12 md:w-17 md:hover:w-60 pt-4 md:pt-5 md:pb-0 bg-white shadow-sm z-50 transition-all duration-300"
         :class="[showSideNav, hoveredSideNavClass]"
         @mouseenter="onEnter"
         @mouseleave="onLeave"
     >
-        <nav
-            class="nav-container flex h-full flex-col justify-between content-center pb-12 overflow-auto"
-        >
+    <!-- <div class="group fixed md:top-0 md:left-0 h-5/6 md:h-screen w-11/12 md:w-17 md:hover:w-60 pt-4 md:pt-5 md:pb-0 bg-white shadow-sm z-50 transition-all duration-300" :class="[showSideNav]"> -->
+        <nav class="nav-container flex h-full flex-col justify-between content-center pb-12 overflow-auto">
             <div>
                 <TheSideNavHeader :to="'/'" :text="'Brand-name'" />
 
@@ -74,12 +74,18 @@ export default defineComponent({
     },
     computed: {
         showSideNav(): string {
-            return this.$store.state.isSideNavShow ? 'left-0' : '-left-full'
+            return this.$store.state.isSideNavShow ? 'left-auto' : 'left-1/8 -top-full'
         },
         hoveredSideNavClass(): string {
             return this.$store.state.isSideNavEnter ? 'md:w-60' : 'md:w-17'
         },
-    }
+        toggle() {
+            this.$store.commit(mutations.toggleSidebar.name)
+        },
+        showSideNavBg(): string {
+            return this.$store.state.isSideNavShow ? 'opacity-75 visible' : 'opacity-0 hidden'
+        }
+    },
 })
 
 </script>
